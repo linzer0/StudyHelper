@@ -1,0 +1,11 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/modules.xml
+/.idea.StudyHelper.iml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../../../:\Projects\Csharp\ASP.NET\StudyHelper\.idea\.idea.StudyHelper\.idea/dataSources/
+/dataSources.local.xml

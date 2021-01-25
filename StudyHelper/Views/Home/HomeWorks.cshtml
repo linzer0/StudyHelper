@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <h3>Заказы книг</h3>
+    <table>
+        <tr>
+            <td>
+                <p>Subject name</p>
+            </td>
+            <td>
+                <p>Work name</p>
+            </td>
+
+            <td>
+                <p> Variant number</p>
+            </td>
+        </tr>
+        @foreach (var homeWork in ViewBag.HomeWorks)
+        {
+            <tr>
+                <td>
+                    <p>@homeWork.SubjectName</p>
+                </td>
+                <td>
+                    <p>@homeWork.WorkName</p>
+                </td>
+                <td>
+                    <p>@homeWork.VariantNumber</p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>
