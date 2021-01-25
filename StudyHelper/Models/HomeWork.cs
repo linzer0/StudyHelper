@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using System.Web;
 
 namespace StudyHelper.Models
 {
@@ -8,5 +8,6 @@ namespace StudyHelper.Models
         public string SubjectName { get; set; }
         public string WorkName { get; set; }
         public int VariantNumber { get; set; }
+        public HttpPostedFile PostedFile { get; set; }
     }
 }
