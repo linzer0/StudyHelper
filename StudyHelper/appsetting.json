@@ -1,20 +1,5 @@
 ﻿{
-  "HomeWorkDatabaseSettings": {
-    "HomeWorkCollectionName": "HomeWork",
-    "ConnectionString": "mongodb://localhost:27017",
-    "DatabaseName": "StudyHelper"
-  },
-  "Logging": {
-    "IncludeScopes": false,
-    "Debug": {
-      "LogLevel": {
-        "Default": "Warning"
-      }
-    },
-    "Console": {
-      "LogLevel": {
-        "Default": "Warning"
-      }
-    }
-  }
+  "CollectionName": "HomeWork",
+  "ConnectionString": "mongodb://localhost:27017",
+  "DatabaseName": "StudyHelper"
 }

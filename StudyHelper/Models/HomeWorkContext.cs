@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.GridFS;
+using StudyHelper.Utils;
 
 namespace StudyHelper.Models
 {
@@ -12,19 +13,22 @@ namespace StudyHelper.Models
         private IMongoDatabase Database;
         private IGridFSBucket GridFs;
 
+        private DatabaseConnection DatabaseConnection;
+
         public HomeWorkContext()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["MongoDb"].ConnectionString;
+            DatabaseConnection = DataBaseSettings.GetConnectionString();
 
-            var connection = new MongoUrlBuilder(connectionString);
+            var connection = new MongoUrlBuilder(DatabaseConnection.GetConnection());
 
-            MongoClient client = new MongoClient(connectionString);
+            MongoClient client = new MongoClient(DatabaseConnection.GetConnection());
 
             Database = client.GetDatabase(connection.DatabaseName);
             GridFs = new GridFSBucket(Database);
         }
 
-        public IMongoCollection<HomeWork> HomeWorks => Database.GetCollection<HomeWork>("HomeWork");
+        public IMongoCollection<HomeWork> HomeWorks =>
+            Database.GetCollection<HomeWork>(DatabaseConnection.CollectionName);
 
         public async Task Add(HomeWork homeWork)
         {
