@@ -23,25 +23,26 @@ namespace StudyHelper.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase file)  
-        {  
-            if (file != null && file.ContentLength > 0)  
-                try 
-                {  
-                    string path = Path.Combine(Server.MapPath("~/Uploads"),  
-                        Path.GetFileName(file.FileName));  
-                    file.SaveAs(path);  
-                    ViewBag.Message = "File uploaded successfully";  
-                }  
-                catch (Exception ex)  
-                {  
-                    ViewBag.Message = "ERROR:" + ex.Message.ToString();  
-                }  
-            else 
-            {  
-                ViewBag.Message = "You have not specified a file.";  
-            }  
-            return View();  
+        public ActionResult Index(HomeWork homeWork)
+        {
+            if (homeWork.PostedFile != null && homeWork.PostedFile.ContentLength > 0)
+                try
+                {
+                    var fileName = homeWork.SubjectName + "/" + homeWork.WorkName + "/" + homeWork.VariantNumber;
+                    string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                    homeWork.PostedFile.SaveAs(path);
+                    ViewBag.Message = "File uploaded successfully";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message;
+                }
+            else
+            {
+                ViewBag.Message = "You have not specified a file.";
+            }
+
+            return View();
         }
 
 
