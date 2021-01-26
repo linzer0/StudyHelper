@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Web;
 using System.Web.Mvc;
 using StudyHelper.Models;
 
@@ -28,15 +27,21 @@ namespace StudyHelper.Controllers
             if (homeWork.PostedFile != null && homeWork.PostedFile.ContentLength > 0)
                 try
                 {
-                    var fileName = homeWork.SubjectName + "/" + homeWork.WorkName + "/" + homeWork.VariantNumber;
-                    string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
-                    homeWork.PostedFile.SaveAs(path);
+                    homeWork.Id = (int) (HomeWorkContext.GetSize() + 1);
+                    homeWork.UploadedFileName =
+                        homeWork.Id.ToString() + Path.GetExtension(homeWork.PostedFile.FileName);
+
+                    string path = Server.MapPath("~/Uploads/");
+                    homeWork.PostedFile.SaveAs(path + homeWork.UploadedFileName);
                     ViewBag.Message = "File uploaded successfully";
+
+                    HomeWorkContext.Add(homeWork);
                 }
                 catch (Exception ex)
                 {
                     ViewBag.Message = "ERROR:" + ex.Message;
                 }
+
             else
             {
                 ViewBag.Message = "You have not specified a file.";

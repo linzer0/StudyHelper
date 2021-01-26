@@ -19,9 +19,9 @@
             <td>
                 <p> Variant number</p>
             </td>
-            
+
             <td>
-               <p> File </p> 
+                <p> File </p>
             </td>
         </tr>
         @foreach (var homeWork in ViewBag.HomeWorks)
@@ -36,9 +36,9 @@
                 <td>
                     <p>@homeWork.VariantNumber</p>
                 </td>
-                
+
                 <td>
-                    <p>@homeWork.PostedFile</p>
+                    <a href="@Url.Content("~/Uploads/" + homeWork.UploadedFileName)">Download File</a>
                 </td>
             </tr>
         }
