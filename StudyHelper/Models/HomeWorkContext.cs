@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using MongoDB.Bson;
@@ -41,6 +42,11 @@ namespace StudyHelper.Models
 
         public Task<List<HomeWork>> GetHomeWorks()
         {
+            if (HomeWorks == null)
+            {
+               Console.WriteLine("ITS NULL");
+               return new HomeWorkContext().GetHomeWorks(); 
+            }
             return HomeWorks.Find(new BsonDocument()).ToListAsync();
         }
 

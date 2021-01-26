@@ -247,6 +247,7 @@
         <Content Include="Content\bootstrap.rtl.css.map" />
         <Content Include="Content\bootstrap.rtl.min.css" />
         <Content Include="Content\bootstrap.rtl.min.css.map" />
+        <Content Include="Content\Custom.css" />
         <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
         <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
         <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
@@ -293,7 +294,6 @@
         <Content Include="Views\Shared\_Layout.cshtml" />
         <Content Include="Views\Home\HomeWorks.cshtml" />
         <Content Include="Views\Home\Contact.cshtml" />
-        <Content Include="Views\Home\Index1.cshtml" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="App_Data" />

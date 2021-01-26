@@ -6,7 +6,8 @@
 </head>
 <body>
 <div>
-    <h3>Заказы книг</h3>
+    <h3>Загруженные работы</h3>
+    @Styles.Render("~/Content/Custom.css")
     <table>
         <tr>
             <td>
@@ -38,7 +39,7 @@
                 </td>
 
                 <td>
-                    <a href="@Url.Content("~/Uploads/" + homeWork.UploadedFileName)">Download File</a>
+                    <a href="@Url.Content("~/Uploads/" + homeWork.UploadedFileName)">Download</a>
                 </td>
             </tr>
         }
@@ -46,3 +47,4 @@
 </div>
 </body>
 </html>
+

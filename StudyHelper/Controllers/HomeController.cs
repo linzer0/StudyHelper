@@ -28,8 +28,7 @@ namespace StudyHelper.Controllers
                 try
                 {
                     homeWork.Id = (int) (HomeWorkContext.GetSize() + 1);
-                    homeWork.UploadedFileName =
-                        homeWork.Id.ToString() + Path.GetExtension(homeWork.PostedFile.FileName);
+                    homeWork.UploadedFileName = homeWork.Id + Path.GetExtension(homeWork.PostedFile.FileName);
 
                     string path = Server.MapPath("~/Uploads/");
                     homeWork.PostedFile.SaveAs(path + homeWork.UploadedFileName);
