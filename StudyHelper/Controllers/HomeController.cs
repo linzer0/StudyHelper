@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.IO;
+using System.Web;
+using System.Web.Mvc;
 using StudyHelper.Models;
 
 namespace StudyHelper.Controllers
@@ -7,6 +10,7 @@ namespace StudyHelper.Controllers
     {
         private HomeWorkContext HomeWorkContext = new HomeWorkContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -14,18 +18,32 @@ namespace StudyHelper.Controllers
 
         public ActionResult HomeWorks()
         {
-
             ViewBag.HomeWorks = HomeWorkContext.GetHomeWorks().Result;
             return View();
         }
 
         [HttpPost]
-        public string Index(HomeWork homeWork)
-        {
-            homeWork.Id = (int) (HomeWorkContext.GetSize() + 1);
-            HomeWorkContext.Add(homeWork);
-            return ("Thank you");
+        public ActionResult Index(HttpPostedFileBase file)  
+        {  
+            if (file != null && file.ContentLength > 0)  
+                try 
+                {  
+                    string path = Path.Combine(Server.MapPath("~/Uploads"),  
+                        Path.GetFileName(file.FileName));  
+                    file.SaveAs(path);  
+                    ViewBag.Message = "File uploaded successfully";  
+                }  
+                catch (Exception ex)  
+                {  
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();  
+                }  
+            else 
+            {  
+                ViewBag.Message = "You have not specified a file.";  
+            }  
+            return View();  
         }
+
 
         public ActionResult Contact()
         {

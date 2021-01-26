@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -34,7 +34,6 @@ namespace StudyHelper.Models
         {
             await HomeWorks.InsertOneAsync(homeWork);
         }
-
         public async Task RemoveByIndex(int index)
         {
             await HomeWorks.DeleteOneAsync(work => work.Id == index);
